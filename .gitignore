@@ -16,6 +16,8 @@ Thumbs.db
 .env.*.local
 *.pem
 *.key
+.channel.json
+bot/.channel.json
 
 # Claude Code локальные настройки
 .claude/settings.local.json

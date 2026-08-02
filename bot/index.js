@@ -34,6 +34,7 @@ import {
   OAUTH_SCOPES,
 } from "./lib/claude-oauth.js";
 import { safeEnvWrite, safeEnvRemove } from "./lib/env-write.js";
+import { loadChannel, saveChannel, clearChannel, parseChannelTags, postToChannel, verifyChannel } from "./lib/channel.js";
 
 // ─── CONFIG ──────────────────────────────────────────────────────────────────
 
@@ -49,6 +50,7 @@ const SYSTEM_PROMPT_PATH = join(WORKSPACE, "CLAUDE.md");
 const CRASH_CONTEXT_FILE = join(DATA_DIR, ".crash_context.md");
 const STATE_FILE = join(DATA_DIR, "state.json");
 const SCHEDULES_FILE = join(DATA_DIR, "schedules.json");
+const CHANNEL_FILE = join(DATA_DIR, "channel.json");
 const MAX_SYSTEM_PROMPT_CHARS = 30000;
 const STREAM_THROTTLE_MS = 1500;
 const BOT_VERSION = (() => {
@@ -336,6 +338,27 @@ const ARCHITECTURE_CONTEXT = `
 - При создании проекта: mkdir -p ~/projects/название && cd ~/projects/название
 `;
 
+function channelPostingContext(cfg) {
+  const name = cfg.channelTitle || cfg.channelUsername || cfg.channelId;
+  return `
+## Публикация в Telegram-канал
+
+К боту подключён канал «${name}»${cfg.channelUsername ? ` (@${cfg.channelUsername})` : ""}. Ты можешь публиковать в него посты.
+
+Когда пользователь просит опубликовать / запостить / выложить что-то в канал — оберни ГОТОВЫЙ текст поста в тег:
+
+[КАНАЛ]текст поста в Telegram-HTML[/КАНАЛ]
+
+Правила:
+- Внутри тега — только Telegram-HTML: <b> <i> <u> <s> <a href="..."> <code> <pre>. НЕ markdown, НЕ ** **.
+- Пост с фото: [КАНАЛ ФОТО=/абсолютный/путь.jpg]подпись[/КАНАЛ]
+- Без звука (без уведомления подписчикам): [КАНАЛ ТИХО]...[/КАНАЛ]
+- Несколько тегов = несколько постов.
+- Текст ВНЕ тега уходит владельцу в личку; текст ВНУТРИ тега — публикуется в канал.
+- После публикации бот сам пришлёт подтверждение со ссылкой — не пиши «опубликовано» сам.
+- Если пользователь не сказал явно «публикуй сразу» — сначала покажи ему текст поста и спроси подтверждение, и только потом ставь тег [КАНАЛ].`;
+}
+
 const MAX_MEMORY_CHARS = 15000;
 const MAX_DIARY_CHARS = 2000;
 
@@ -369,6 +392,12 @@ function buildSystemPrompt() {
 
   // 2. Architecture context
   parts.push(ARCHITECTURE_CONTEXT);
+
+  // 2b. Channel posting instructions (only if a channel is connected)
+  try {
+    const chCfg = loadChannel(CHANNEL_FILE);
+    if (chCfg) parts.push(channelPostingContext(chCfg));
+  } catch {}
 
   // 3. All DNA files (skip CLAUDE.md — already loaded)
   const dnaFiles = [
@@ -1264,35 +1293,40 @@ function sendChunked(html) {
 }
 
 async function sendResponse(ctx, text) {
-  // Extract media tags before formatting
-  const { cleaned, media } = extractMediaTags(text);
+  // Extract channel-post tags FIRST (their HTML body must stay untouched)
+  const { cleaned: afterChannel, posts: channelPosts } = parseChannelTags(text);
+  // Then media tags before formatting
+  const { cleaned, media } = extractMediaTags(afterChannel);
   const html = mdToTgHtml(cleaned);
 
   // Check if response needs confirmation buttons
   const hasConfirmation = needsConfirmation(cleaned);
 
-  if (html.length <= CHUNK_HARD_LIMIT) {
-    const replyOpts = {
-      parse_mode: "HTML",
-      ...(hasConfirmation ? { reply_markup: confirmKeyboard() } : {}),
-    };
-    try {
-      await ctx.reply(html, replyOpts);
-    } catch {
-      // Fallback: if HTML parsing fails, send as plain text
-      await ctx.reply(cleaned);
-    }
-  } else {
-    const chunks = sendChunked(html);
-    for (let i = 0; i < chunks.length; i++) {
-      const isLast = i === chunks.length - 1;
-      const markup = (isLast && hasConfirmation)
-        ? { reply_markup: confirmKeyboard() }
-        : {};
+  // Send owner-facing text (skip if empty — e.g. response was only a channel tag)
+  if (cleaned) {
+    if (html.length <= CHUNK_HARD_LIMIT) {
+      const replyOpts = {
+        parse_mode: "HTML",
+        ...(hasConfirmation ? { reply_markup: confirmKeyboard() } : {}),
+      };
       try {
-        await ctx.reply(chunks[i], { parse_mode: "HTML", ...markup });
+        await ctx.reply(html, replyOpts);
       } catch {
-        await ctx.reply(chunks[i].replace(/<[^>]+>/g, ""), markup);
+        // Fallback: if HTML parsing fails, send as plain text
+        await ctx.reply(cleaned);
+      }
+    } else {
+      const chunks = sendChunked(html);
+      for (let i = 0; i < chunks.length; i++) {
+        const isLast = i === chunks.length - 1;
+        const markup = (isLast && hasConfirmation)
+          ? { reply_markup: confirmKeyboard() }
+          : {};
+        try {
+          await ctx.reply(chunks[i], { parse_mode: "HTML", ...markup });
+        } catch {
+          await ctx.reply(chunks[i].replace(/<[^>]+>/g, ""), markup);
+        }
       }
     }
   }
@@ -1300,6 +1334,33 @@ async function sendResponse(ctx, text) {
   // Send media files after text
   for (const item of media) {
     await sendMediaItem(ctx, item);
+  }
+
+  // Publish channel posts requested by the agent via [КАНАЛ]...[/КАНАЛ]
+  if (channelPosts.length) {
+    await publishChannelPosts(ctx, channelPosts);
+  }
+}
+
+// ─── CHANNEL PUBLISHING ───────────────────────────────────────────────────────
+
+async function publishChannelPosts(ctx, posts) {
+  const cfg = loadChannel(CHANNEL_FILE);
+  if (!cfg) {
+    await ctx.reply("⚠️ Канал для публікації не налаштований. Підключи його командою /channel.").catch(() => {});
+    return;
+  }
+  for (const post of posts) {
+    const res = await postToChannel(cfg, post);
+    if (res.ok) {
+      const where = cfg.channelTitle ? `«${cfg.channelTitle}»` : "канал";
+      const link = res.link ? `\n${res.link}` : "";
+      await ctx.reply(`✅ Опубліковано в ${where}${link}`, {
+        link_preview_options: { is_disabled: true },
+      }).catch(() => {});
+    } else {
+      await ctx.reply(`❌ Не вдалося опублікувати в канал: ${res.error}`).catch(() => {});
+    }
   }
 }
 
@@ -1849,6 +1910,73 @@ bot.command("status", async (ctx) => {
     `${spendIcon} <b>Расход сегодня:</b> $${spent.toFixed(2)} / $${limit}`;
 
   await ctx.reply(status, { parse_mode: "HTML" });
+});
+
+// /channel — статус і підключення каналу для автопостингу
+bot.command("channel", async (ctx) => {
+  if (!isOwner(ctx)) return;
+  const arg = (ctx.match || "").trim();
+
+  // Відключення
+  if (/^(off|видалити|відключити|disconnect)$/i.test(arg)) {
+    clearChannel(CHANNEL_FILE);
+    return ctx.reply("🔌 Канал відключено. Автопостинг вимкнено.");
+  }
+
+  // Підключення: /channel setup ТОКЕН|ID_КАНАЛУ|ЮЗЕРНЕЙМ
+  const setupMatch = /^setup\s+([\s\S]+)$/i.exec(arg);
+  if (setupMatch) {
+    ctx.deleteMessage().catch(() => {}); // приховати повідомлення з токеном
+    const [token, channelId, username] = setupMatch[1].split("|").map((s) => s.trim());
+    if (!token || !channelId) {
+      return ctx.reply("Формат: <code>/channel setup ТОКЕН|ID_КАНАЛУ|ЮЗЕРНЕЙМ</code>\n(юзернейм необовʼязковий — для приватного каналу пропусти).", { parse_mode: "HTML" });
+    }
+    const cfg = {
+      token,
+      channelId: /^-?\d+$/.test(channelId) ? Number(channelId) : channelId,
+      channelUsername: username ? username.replace(/^@/, "") : null,
+      channelTitle: null,
+    };
+    const status = await ctx.reply("Перевіряю доступ до каналу...");
+    const v = await verifyChannel(cfg);
+    if (!v.ok) {
+      return ctx.api.editMessageText(status.chat.id, status.message_id,
+        `❌ Не вдалося підключити: ${v.error}\n\nПеревір: 1) правильний токен постинг-бота; 2) бот доданий адміном у канал з правом «Публікація повідомлень».`);
+    }
+    try {
+      const chat = await (await fetch(`https://api.telegram.org/bot${token}/getChat?chat_id=${cfg.channelId}`)).json();
+      if (chat.ok) {
+        cfg.channelTitle = chat.result.title || null;
+        if (!cfg.channelUsername && chat.result.username) cfg.channelUsername = chat.result.username;
+      }
+    } catch {}
+    saveChannel(CHANNEL_FILE, cfg);
+    return ctx.api.editMessageText(status.chat.id, status.message_id,
+      `✅ Канал підключено: «${cfg.channelTitle || cfg.channelId}»\nПостинг-бот: @${v.botUsername}\n\nТепер кажи мені «опублікуй в канал …» — і я публікуватиму.`);
+  }
+
+  // Статус
+  const cfg = loadChannel(CHANNEL_FILE);
+  if (!cfg) {
+    return ctx.reply(
+      "📢 <b>Автопостинг у канал</b>\n\nЗараз не налаштовано.\n\n" +
+      "Щоб підключити:\n" +
+      "1) Додай бота-постувальника <b>адміністратором</b> у свій канал (право «Публікація повідомлень»).\n" +
+      "2) Надішли мені:\n<code>/channel setup ТОКЕН|ID_КАНАЛУ|ЮЗЕРНЕЙМ</code>\n\n" +
+      "ID каналу не знаєш — просто перешли мені будь-який пост із каналу, підкажу.",
+      { parse_mode: "HTML" }
+    );
+  }
+  const v = await verifyChannel(cfg);
+  const adminLine = v.ok ? "адмін ✅, право публікації ✅" : `⚠️ ${v.error}`;
+  return ctx.reply(
+    "📢 <b>Автопостинг у канал</b>\n\n" +
+    `Канал: <b>${cfg.channelTitle || cfg.channelId}</b>${cfg.channelUsername ? ` (@${cfg.channelUsername})` : ""}\n` +
+    `Постинг-бот: @${v.botUsername || "?"}\n` +
+    `Статус: ${adminLine}\n\n` +
+    "Відключити: /channel off",
+    { parse_mode: "HTML" }
+  );
 });
 
 // /update — self-update from GitHub
@@ -2617,6 +2745,7 @@ bot.start({
       { command: "reset", description: "Новая сессия" },
       { command: "settings", description: "Настройки" },
       { command: "status", description: "Статус системы" },
+      { command: "channel", description: "📢 Канал для автопостинга" },
       { command: "connect", description: "🔌 VS Code через туннель" },
       { command: "reauth", description: "🔑 Переподключить Claude" },
       { command: "update", description: "🔄 Обновить бота" },

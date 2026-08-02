@@ -42,7 +42,7 @@ BASE_URL="https://raw.githubusercontent.com/$REPO/$BRANCH/bot"
 
 # Files to download
 CORE_FILES="index.js secrets-menu.js voice-helper.js package.json VERSION agent-bot.service"
-LIB_FILES="lib/db.js lib/embeddings.js lib/memory-indexer.js lib/memory-search.js lib/claude-oauth.js lib/env-write.js"
+LIB_FILES="lib/db.js lib/embeddings.js lib/memory-indexer.js lib/memory-search.js lib/claude-oauth.js lib/env-write.js lib/channel.js"
 SCRIPT_FILES="scripts/manage-schedule.js scripts/memory-search.js scripts/reindex.js"
 MIGRATION_FILES="migrations/001_memory_index.sql"
 IMAGES_FILES="images/step5_claude_authorize.png images/step5_browser_error.png"
