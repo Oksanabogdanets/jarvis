@@ -24,3 +24,6 @@ bot/.channel.json
 
 bot/node_modules/
 .media/
+
+# Аудіо-нотатки — великі файли, не для GitHub
+WhisperNotes/
