@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>РІЛС, ЩО ПРОДАЮТЬ — навчання зйомці рілс від Оксани</title>
+<meta name="description" content="За 4 тижні навчись знімати рілс, які приводять підписників і клієнтів. Система контенту, зйомка на телефон, воронка продажів у дірект.">
+<!-- ============================================================
+  ЗАГЛУШКИ, ЯКІ ТРЕБА ЗАМІНИТИ (шукай по тексту «ЗАМІНИ»):
+  1. Назва курсу (зараз робоча: РІЛС, ЩО ПРОДАЮТЬ)
+  2. Дата старту: 15 вересня 2026 (і в таймері, const START_DATE внизу)
+  3. Ціни тарифів: $149 / $299 / $599 — чернетка
+  4. Фото авторки (блок «Хто веде»)
+  5. Кейси з цифрами (3 картки)
+  6. Скріни відгуків (4 картки)
+  7. Посилання оплати на кнопках тарифів (зараз #)
+============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Golos+Text:wght@400;500;600;800&family=JetBrains+Mono:wght@400;700&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d0b09;
+  --paper:#f4efe6;
+  --paper-dim:#e9e1d2;
+  --rec:#ff3b30;
+  --rec-deep:#d92c22;
+  --lime:#d8f34f;
+  --line:rgba(13,11,9,.16);
+  --line-strong:rgba(13,11,9,.85);
+  --display:'Unbounded', sans-serif;
+  --body:'Golos Text', sans-serif;
+  --mono:'JetBrains Mono', monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.55;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+::selection{background:var(--rec);color:var(--paper)}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+.sec{padding:96px 0;position:relative}
+.sec-dark{background:var(--ink);color:var(--paper)}
+.sec-dark .kicker{color:var(--lime)}
+.kicker{
+  font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--rec-deep);display:flex;align-items:center;gap:10px;margin-bottom:22px;
+}
+.kicker::before{content:'';width:34px;height:2px;background:currentColor;flex:none}
+h2{
+  font-family:var(--display);font-weight:800;line-height:1.06;
+  font-size:clamp(28px,4.6vw,52px);letter-spacing:-.01em;margin-bottom:28px;
+  text-transform:uppercase;
+}
+h2 em{font-style:normal;color:var(--rec)}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--display);font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.03em;
+  background:var(--rec);color:#fff;text-decoration:none;
+  padding:20px 34px;border:2px solid var(--ink);
+  box-shadow:6px 6px 0 var(--ink);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.sec-dark .btn--ghost{color:var(--paper);border-color:var(--paper);box-shadow:6px 6px 0 rgba(244,239,230,.35)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease, transform .6s ease}
+.reveal.on{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<main>
+<!-- SECTIONS -->
+</main>
+
+<script>
+// Таймер + скрол-анімації додаються нижче
+</script>
+</body>
+</html>
