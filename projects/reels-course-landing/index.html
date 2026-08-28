@@ -211,6 +211,39 @@ h1 em{
 .author-facts b{color:var(--lime)}
 .author-note{font-size:12px;opacity:.55}
 @media(max-width:820px){.author-grid{grid-template-columns:1fr;gap:40px}.photo-slot{max-width:320px}}
+
+/* ---------- кейси ---------- */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.case{border:2px solid var(--ink);background:#fff;padding:26px 24px;box-shadow:7px 7px 0 var(--lime)}
+.case-niche{font-size:12px;text-transform:uppercase;letter-spacing:.1em;background:var(--ink);color:var(--lime);display:inline-block;padding:5px 10px;margin-bottom:20px}
+.case-row{display:flex;flex-direction:column;gap:2px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.case-row span{font-size:13px;opacity:.65}
+.case-row b{font-family:var(--display);font-size:19px;font-weight:600;color:var(--rec-deep)}
+.case-quote{padding-top:16px;font-size:14px;font-style:italic;opacity:.85}
+@media(max-width:820px){.cases{grid-template-columns:1fr}}
+
+/* ---------- тарифи ---------- */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch}
+.plan{
+  border:2px solid var(--paper);padding:32px 26px;display:flex;flex-direction:column;
+  position:relative;background:rgba(244,239,230,.03);
+}
+.plan--hot{border-color:var(--lime);background:rgba(216,243,79,.07);transform:scale(1.03)}
+.plan-badge{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--rec);color:#fff;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 14px;white-space:nowrap;
+}
+.plan-name{font-size:13px;letter-spacing:.14em;opacity:.8;margin-bottom:14px}
+.plan-price{font-family:var(--display);font-size:52px;font-weight:800;color:var(--lime);margin-bottom:24px}
+.plan-list{list-style:none;display:grid;gap:11px;margin-bottom:30px;flex:1}
+.plan-list li{padding-left:26px;position:relative;font-size:14px}
+.plan-list .yes::before{content:'✓';position:absolute;left:0;color:var(--lime);font-weight:700}
+.plan-list .no{opacity:.38;text-decoration:line-through}
+.plan-list .no::before{content:'✕';position:absolute;left:0}
+.plan-btn{justify-content:center;text-align:center}
+.plans-note{margin-top:36px;font-size:12px;opacity:.6;text-align:center}
+@media(max-width:880px){.plans{grid-template-columns:1fr}.plan--hot{transform:none}}
 </style>
 </head>
 <body>
@@ -381,6 +414,87 @@ h1 em{
       </ul>
       <p class="mono author-note">[ ЗАМІНИ: 2–3 цифри-регалії — років у ніші, кількість проєктів, сумарні перегляди ]</p>
     </div>
+  </div>
+</section>
+<!-- ================= 7. КЕЙСИ ================= -->
+<section class="sec" id="cases">
+  <div class="wrap">
+    <p class="kicker">Кейси • [ ЗАМІНИ на реальні цифри та скріни ]</p>
+    <h2>До / <em>після</em></h2>
+    <div class="cases">
+      <div class="case reveal">
+        <div class="case-niche mono">б'юті-майстер</div>
+        <div class="case-row"><span>Перегляди рілс</span><b>800 → 45 000</b></div>
+        <div class="case-row"><span>Заявок у дірект / міс</span><b>2 → 27</b></div>
+        <div class="case-quote">«Записи на місяць вперед — уперше за два роки»</div>
+      </div>
+      <div class="case reveal">
+        <div class="case-niche mono">експерт-нутриціолог</div>
+        <div class="case-row"><span>Підписники за 6 тижнів</span><b>+3 200</b></div>
+        <div class="case-row"><span>Продажі консультацій</span><b>з 0 до 15/міс</b></div>
+        <div class="case-quote">«Перший рілс за системою набрав більше, ніж усі за рік»</div>
+      </div>
+      <div class="case reveal">
+        <div class="case-niche mono">локальна кав'ярня</div>
+        <div class="case-row"><span>Охоплення / міс</span><b>4К → 120К</b></div>
+        <div class="case-row"><span>Нові гості з Instagram</span><b>щодня питають «ви з рілс?»</b></div>
+        <div class="case-quote">«Черга в суботу — з одного відео»</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8. ТАРИФИ ================= -->
+<section class="sec sec-dark" id="plans">
+  <div class="wrap">
+    <p class="kicker">Тарифи • старт 15 вересня</p>
+    <h2>Обери свій<br><em>формат</em></h2>
+    <div class="plans">
+      <div class="plan reveal">
+        <div class="plan-name mono">САМОСТІЙНИЙ</div>
+        <div class="plan-price">$149</div>
+        <ul class="plan-list">
+          <li class="yes">8 модулів у записі</li>
+          <li class="yes">Робочі шаблони: сценарії, чек-листи зйомки</li>
+          <li class="yes">Банк 30 ідей під нішу</li>
+          <li class="yes">Доступ 6 місяців</li>
+          <li class="no">Перевірка домашніх завдань</li>
+          <li class="no">Розбори твоїх рілс</li>
+          <li class="no">Особиста робота з Оксаною</li>
+        </ul>
+        <a class="btn btn--ghost plan-btn" href="#">Йду сам(а)</a>
+      </div>
+      <div class="plan plan--hot reveal">
+        <div class="plan-badge mono">хіт • 20 місць</div>
+        <div class="plan-name mono">З ФІДБЕКОМ</div>
+        <div class="plan-price">$299</div>
+        <ul class="plan-list">
+          <li class="yes">Все з тарифу «Самостійний»</li>
+          <li class="yes">Перевірка ДЗ після кожного модуля</li>
+          <li class="yes">Розбір кожного твого рілс</li>
+          <li class="yes">2 групові Zoom-розбори на тиждень</li>
+          <li class="yes">Чат потоку з підтримкою</li>
+          <li class="yes">Доступ 12 місяців</li>
+          <li class="no">Особиста робота з Оксаною</li>
+        </ul>
+        <a class="btn plan-btn" href="#">Хочу з фідбеком</a>
+      </div>
+      <div class="plan reveal">
+        <div class="plan-name mono">VIP • ОСОБИСТО</div>
+        <div class="plan-price">$599</div>
+        <ul class="plan-list">
+          <li class="yes">Все з тарифу «З фідбеком»</li>
+          <li class="yes">3 особисті сесії з Оксаною 1:1</li>
+          <li class="yes">Контент-стратегія, зібрана разом</li>
+          <li class="yes">Місяць супроводу після курсу</li>
+          <li class="yes">Пріоритетний фідбек 24 год</li>
+          <li class="yes">Доступ назавжди</li>
+          <li class="yes">Лише 5 місць</li>
+        </ul>
+        <a class="btn btn--ghost plan-btn" href="#">Хочу VIP</a>
+      </div>
+    </div>
+    <p class="plans-note mono">[ ЗАМІНИ: ціни — чернетка; постав реальні + посилання оплати на кнопки ] • Можлива оплата двома частинами</p>
   </div>
 </section>
 <!-- SECTIONS -->
