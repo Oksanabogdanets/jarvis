@@ -77,11 +77,123 @@ h2 em{font-style:normal;color:var(--rec)}
 .sec-dark .btn--ghost{color:var(--paper);border-color:var(--paper);box-shadow:6px 6px 0 rgba(244,239,230,.35)}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease, transform .6s ease}
 .reveal.on{opacity:1;transform:none}
+
+/* ---------- топбар ---------- */
+.topbar{
+  position:sticky;top:0;z-index:100;background:var(--paper);
+  border-bottom:2px solid var(--ink);
+}
+.topbar-in{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-weight:700;font-size:14px;letter-spacing:.06em}
+.logo::first-letter{color:var(--rec)}
+.topnav{display:flex;gap:26px;align-items:center;font-size:14px;font-weight:600}
+.topnav a{text-decoration:none}
+.topnav a:hover{color:var(--rec-deep)}
+.topnav-cta{background:var(--ink);color:var(--paper)!important;padding:9px 18px}
+@media(max-width:760px){.topnav a:not(.topnav-cta){display:none}}
+
+/* ---------- хіро ---------- */
+.hero{border-bottom:2px solid var(--ink);position:relative}
+.hero-marquee{
+  overflow:hidden;white-space:nowrap;border-bottom:2px solid var(--ink);
+  background:var(--lime);padding:9px 0;font-size:12px;letter-spacing:.12em;font-weight:700;
+}
+.hero-marquee span{display:inline-block;animation:marquee 28s linear infinite}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.hero-in{
+  display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center;
+  padding-top:72px;padding-bottom:80px;
+}
+h1{
+  font-family:var(--display);font-weight:900;text-transform:uppercase;
+  font-size:clamp(44px,8.2vw,104px);line-height:.94;letter-spacing:-.015em;margin-bottom:26px;
+}
+h1 em{
+  font-style:normal;color:var(--rec);
+  text-shadow:4px 4px 0 var(--ink);
+}
+.hero-sub{font-size:19px;max-width:520px;margin-bottom:36px}
+.hero-cta{display:flex;gap:18px;flex-wrap:wrap}
+.viewfinder{
+  border:2px solid var(--ink);background:var(--ink);color:var(--paper);
+  box-shadow:10px 10px 0 var(--rec);transform:rotate(2deg);
+}
+.vf-top{display:flex;align-items:center;gap:8px;padding:12px 16px;font-size:12px;border-bottom:1px dashed rgba(244,239,230,.35)}
+.rec-dot{width:10px;height:10px;border-radius:50%;background:var(--rec);animation:blink 1.1s steps(2) infinite}
+@keyframes blink{50%{opacity:.15}}
+.vf-body{padding:26px 16px;display:grid;gap:20px}
+.vf-stat{display:flex;align-items:baseline;gap:14px}
+.vf-stat b{font-family:var(--display);font-size:44px;font-weight:800;color:var(--lime);min-width:70px}
+.vf-stat span{font-size:14px;opacity:.85}
+.vf-bottom{padding:12px 16px;font-size:11px;border-top:1px dashed rgba(244,239,230,.35);color:var(--lime);opacity:.8}
+@media(max-width:880px){.hero-in{grid-template-columns:1fr;gap:44px}.viewfinder{transform:none;max-width:380px}}
+
+/* ---------- таймер ---------- */
+.hero-timer{background:var(--ink);color:var(--paper)}
+.timer-in{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:16px 24px;flex-wrap:wrap}
+.timer-label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.timer{display:flex;gap:22px}
+.timer span{display:flex;flex-direction:column;align-items:center}
+.timer b{font-size:30px;font-weight:700;color:var(--lime);font-variant-numeric:tabular-nums}
+.timer i{font-style:normal;font-size:11px;opacity:.6;text-transform:uppercase}
 </style>
 </head>
 <body>
 
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <div class="logo mono">●&nbsp;REC&nbsp;/ РІЛС, ЩО ПРОДАЮТЬ</div>
+    <nav class="topnav">
+      <a href="#program">Програма</a>
+      <a href="#author">Хто веде</a>
+      <a href="#cases">Кейси</a>
+      <a href="#plans" class="topnav-cta">Тарифи</a>
+    </nav>
+  </div>
+</header>
+
 <main>
+
+<!-- ================= 1. ХІРО ================= -->
+<section class="hero">
+  <div class="hero-marquee mono" aria-hidden="true">
+    <span>ЗЙОМКА НА ТЕЛЕФОН • СЦЕНАРІЇ І ХУКИ • АЛГОРИТМИ • ВОРОНКА В ДІРЕКТ • ПРОДАЖІ З РІЛС • ЗЙОМКА НА ТЕЛЕФОН • СЦЕНАРІЇ І ХУКИ • АЛГОРИТМИ • ВОРОНКА В ДІРЕКТ • ПРОДАЖІ З РІЛС • </span>
+  </div>
+  <div class="wrap hero-in">
+    <div class="hero-left">
+      <p class="kicker">Практичний курс • старт 15 вересня 2026</p>
+      <h1>Рілс, що<br><em>прода&shy;ють</em></h1>
+      <p class="hero-sub">За 4 тижні навчися знімати рілс, які приводять підписників і <b>заявки в дірект</b> — навіть якщо зараз твої відео набирають 200 переглядів. Телефон + система замість натхнення.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#plans">Обрати тариф ↓</a>
+        <a class="btn btn--ghost" href="#program">Дивитись програму</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="viewfinder">
+        <div class="vf-top mono"><span class="rec-dot"></span>REC&nbsp;&nbsp;00:00:15&nbsp;&nbsp;•&nbsp;&nbsp;9:16</div>
+        <div class="vf-body">
+          <div class="vf-stat"><b data-count="4">0</b><span>тижні практики</span></div>
+          <div class="vf-stat"><b data-count="8">0</b><span>модулів системи</span></div>
+          <div class="vf-stat"><b data-count="30">0</b><span>ідей контенту на місяць</span></div>
+        </div>
+        <div class="vf-bottom mono">[ ЗАМІНИ: сюди твоє фото або кадр зі зйомки ]</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-timer">
+    <div class="wrap timer-in">
+      <span class="timer-label mono">До старту потоку:</span>
+      <div class="timer mono" id="timer">
+        <span><b id="t-d">00</b><i>дн</i></span>
+        <span><b id="t-h">00</b><i>год</i></span>
+        <span><b id="t-m">00</b><i>хв</i></span>
+        <span><b id="t-s">00</b><i>сек</i></span>
+      </div>
+      <span class="timer-label mono">Місць на тарифі з фідбеком — 20</span>
+    </div>
+  </div>
+</section>
 <!-- SECTIONS -->
 </main>
 
