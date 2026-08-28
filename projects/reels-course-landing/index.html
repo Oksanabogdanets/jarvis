@@ -244,6 +244,46 @@ h1 em{
 .plan-btn{justify-content:center;text-align:center}
 .plans-note{margin-top:36px;font-size:12px;opacity:.6;text-align:center}
 @media(max-width:880px){.plans{grid-template-columns:1fr}.plan--hot{transform:none}}
+
+/* ---------- відгуки ---------- */
+.reviews{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.review{border:2px solid var(--ink);background:#fff;padding:26px;position:relative}
+.review:nth-child(odd){transform:rotate(-.7deg)}
+.review:nth-child(even){transform:rotate(.7deg)}
+.review p{font-size:16px;margin-bottom:14px}
+.review span{font-size:11px;color:var(--rec-deep);letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:700px){.reviews{grid-template-columns:1fr}}
+
+/* ---------- гарантія ---------- */
+.guarantee{display:grid;grid-template-columns:.6fr 1.4fr;gap:56px;align-items:center}
+.guarantee-mark{
+  font-size:clamp(64px,9vw,120px);font-weight:700;color:var(--lime);
+  border:3px solid var(--lime);aspect-ratio:1;display:grid;place-items:center;
+  transform:rotate(-6deg);max-width:280px;
+}
+.guarantee-text{font-size:17px;max-width:560px;opacity:.92}
+@media(max-width:760px){.guarantee{grid-template-columns:1fr;gap:36px}.guarantee-mark{max-width:180px;font-size:44px}}
+
+/* ---------- FAQ ---------- */
+.faq{display:grid;gap:12px;max-width:820px}
+.faq-item{border-bottom:2px solid var(--ink);background:transparent}
+.faq-item summary{
+  list-style:none;cursor:pointer;font-family:var(--display);font-weight:600;font-size:17px;
+  padding:20px 40px 20px 0;position:relative;user-select:none;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';position:absolute;right:6px;top:16px;font-size:24px;color:var(--rec)}
+.faq-item[open] summary::after{content:'–'}
+.faq-item p{padding:0 0 22px;font-size:15px;max-width:680px;opacity:.85}
+
+/* ---------- фінал + футер ---------- */
+.final{text-align:center}
+.final .kicker{justify-content:center}
+.final-h{font-size:clamp(24px,3.6vw,42px);max-width:900px;margin:0 auto 24px}
+.final-sub{font-size:17px;opacity:.85;margin-bottom:36px}
+.final-btn{font-size:17px;padding:24px 46px;border-color:var(--lime);box-shadow:6px 6px 0 var(--lime)}
+.footer{background:var(--ink);color:var(--paper);border-top:1px dashed rgba(244,239,230,.3)}
+.footer-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px 24px;font-size:12px;opacity:.65}
 </style>
 </head>
 <body>
@@ -497,11 +537,106 @@ h1 em{
     <p class="plans-note mono">[ ЗАМІНИ: ціни — чернетка; постав реальні + посилання оплати на кнопки ] • Можлива оплата двома частинами</p>
   </div>
 </section>
-<!-- SECTIONS -->
+<!-- ================= 9. ВІДГУКИ ================= -->
+<section class="sec">
+  <div class="wrap">
+    <p class="kicker">Відгуки • [ ЗАМІНИ на реальні скріни з дірект/телеграм ]</p>
+    <h2>Що кажуть <em>учасниці</em></h2>
+    <div class="reviews">
+      <div class="review reveal"><p>«Оксано, ти не повіриш — рілс, який ми розбирали, набрав 32К! Це мій рекорд за весь час 🥹»</p><span class="mono">— скрін з дірект</span></div>
+      <div class="review reveal"><p>«Нарешті знімаю за годину те, на що йшов цілий день. Батч-зйомка — любов»</p><span class="mono">— скрін з чату потоку</span></div>
+      <div class="review reveal"><p>«3 заявки з одного рілс. Я вже окупила курс, а він ще не закінчився»</p><span class="mono">— скрін з телеграм</span></div>
+      <div class="review reveal"><p>«Найцінніше — фідбек. Ти бачиш свої відео чужими очима і розумієш, ЩО саме виправити»</p><span class="mono">— скрін з дірект</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10. ГАРАНТІЯ ================= -->
+<section class="sec sec-dark guarantee-sec">
+  <div class="wrap guarantee">
+    <div class="guarantee-mark mono reveal">100%</div>
+    <div class="reveal">
+      <p class="kicker">Гарантія</p>
+      <h2>Тиждень, щоб<br><em>передумати</em></h2>
+      <p class="guarantee-text">Пройди перший модуль. Якщо зрозумієш, що це не твоє — напиши протягом 7 днів після старту, і я поверну гроші повністю. Без питань і без «а чому?». Я впевнена в програмі, бо вона зібрана з реальної клієнтської практики.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 11. FAQ ================= -->
+<section class="sec">
+  <div class="wrap">
+    <p class="kicker">Питання, які ставлять усі</p>
+    <h2>FAQ</h2>
+    <div class="faq">
+      <details class="faq-item reveal"><summary>У мене немає айфона. Вийде?</summary><p>Так. Уся зйомка — на будь-який смартфон із нормальною камерою останніх 4–5 років. Важливі світло і сценарій, а не техніка.</p></details>
+      <details class="faq-item reveal"><summary>У мене 100 підписників. Мені зарано?</summary><p>Навпаки — саме вчасно. Рілс показуються не підписникам, а холодній аудиторії. Малий акаунт зростає з рілс найшвидше.</p></details>
+      <details class="faq-item reveal"><summary>Скільки часу треба на тиждень?</summary><p>4–6 годин: 1–1,5 години уроки, решта — практика (зйомка і монтаж твоїх рілс). Усі уроки в записі, дивишся коли зручно.</p></details>
+      <details class="faq-item reveal"><summary>Я соромлюся камери</summary><p>Окремий урок у модулі зйомки. Плюс частина форматів взагалі не потребує обличчя в кадрі — почнеш з них.</p></details>
+      <details class="faq-item reveal"><summary>Чи можна платити частинами?</summary><p>Так, оплата двома частинами доступна на всіх тарифах. Напиши в дірект — підберемо графік.</p></details>
+      <details class="faq-item reveal"><summary>Що, як я не встигатиму?</summary><p>Доступ до матеріалів лишається після потоку (6–12 місяців залежно від тарифу), а чат не зникає наступного дня після фінішу.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 12. ФІНАЛЬНИЙ CTA ================= -->
+<section class="sec sec-dark final">
+  <div class="wrap final-in">
+    <p class="kicker">Останній крок</p>
+    <h2 class="final-h">Через місяць ти або знімаєш рілс, що продають, —<br>або далі <em>дивишся чужі</em></h2>
+    <p class="final-sub">Старт потоку — 15 вересня. Місць на тарифі з фідбеком — 20.</p>
+    <a class="btn final-btn" href="#plans">Обрати тариф ↑</a>
+  </div>
+</section>
 </main>
 
+<footer class="footer">
+  <div class="wrap footer-in mono">
+    <span>© 2026 Оксана • Рілс, що продають</span>
+    <span>[ ЗАМІНИ: @instagram • телеграм • ФОП і оферта ]</span>
+  </div>
+</footer>
+
 <script>
-// Таймер + скрол-анімації додаються нижче
+// ЗАМІНИ: дата старту потоку (рік, місяць-1, день, година)
+const START_DATE = new Date(2026, 8, 15, 12, 0, 0); // 15 вересня 2026, 12:00
+
+function tick(){
+  let diff = Math.max(0, START_DATE - new Date());
+  const d = Math.floor(diff / 864e5);
+  const h = Math.floor(diff % 864e5 / 36e5);
+  const m = Math.floor(diff % 36e5 / 6e4);
+  const s = Math.floor(diff % 6e4 / 1e3);
+  const pad = n => String(n).padStart(2, '0');
+  document.getElementById('t-d').textContent = pad(d);
+  document.getElementById('t-h').textContent = pad(h);
+  document.getElementById('t-m').textContent = pad(m);
+  document.getElementById('t-s').textContent = pad(s);
+}
+tick();
+setInterval(tick, 1000);
+
+// Скрол-анімації
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+}, { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Лічильники в хіро
+const cio = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    cio.unobserve(e.target);
+    const target = +e.target.dataset.count;
+    const t0 = performance.now();
+    (function step(t){
+      const p = Math.min(1, (t - t0) / 900);
+      e.target.textContent = Math.round(target * p);
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  });
+}, { threshold: .5 });
+document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
 </script>
 </body>
 </html>
