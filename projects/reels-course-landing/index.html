@@ -136,6 +136,40 @@ h1 em{
 .timer span{display:flex;flex-direction:column;align-items:center}
 .timer b{font-size:30px;font-weight:700;color:var(--lime);font-variant-numeric:tabular-nums}
 .timer i{font-style:normal;font-size:11px;opacity:.6;text-transform:uppercase}
+
+/* ---------- болі ---------- */
+.pains{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink);background:var(--ink);grid-gap:2px}
+.pain{background:var(--paper);padding:30px 28px;position:relative}
+.pain:hover{background:var(--paper-dim)}
+.pain-num{position:absolute;top:22px;right:24px;font-size:13px;color:var(--rec-deep);font-weight:700}
+.pain h3{font-family:var(--display);font-size:19px;font-weight:600;margin-bottom:12px;padding-right:44px}
+.pain p{font-size:15px;opacity:.85}
+.pains-bridge{margin-top:40px;font-size:21px;max-width:640px}
+.pains-bridge b{background:var(--lime);padding:2px 8px}
+@media(max-width:700px){.pains{grid-template-columns:1fr}}
+
+/* ---------- для кого ---------- */
+.who{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.who-card{border:2px solid var(--paper);padding:30px 26px;position:relative;transition:transform .2s ease}
+.who-card:hover{transform:translateY(-6px)}
+.who-card:nth-child(2){border-color:var(--lime)}
+.who-tag{
+  width:44px;height:44px;display:grid;place-items:center;font-weight:700;font-size:18px;
+  background:var(--rec);color:#fff;margin-bottom:22px;
+}
+.who-card:nth-child(2) .who-tag{background:var(--lime);color:var(--ink)}
+.who-card h3{font-family:var(--display);font-size:18px;font-weight:600;margin-bottom:12px}
+.who-card p{font-size:15px;opacity:.88}
+@media(max-width:820px){.who{grid-template-columns:1fr}}
+
+/* ---------- результати ---------- */
+.results{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:960px}
+.results li{
+  border-left:5px solid var(--rec);background:#fff;
+  padding:24px 26px;font-size:16px;box-shadow:5px 5px 0 rgba(13,11,9,.10);
+}
+.results li b{display:block;font-family:var(--display);font-size:17px;font-weight:600;margin-bottom:8px}
+@media(max-width:700px){.results{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -192,6 +226,59 @@ h1 em{
       </div>
       <span class="timer-label mono">Місць на тарифі з фідбеком — 20</span>
     </div>
+  </div>
+</section>
+<!-- ================= 2. БОЛІ ================= -->
+<section class="sec">
+  <div class="wrap">
+    <p class="kicker">Знайоме?</p>
+    <h2>Ти знімаєш рілс.<br>А вони — <em>не працюють</em></h2>
+    <div class="pains">
+      <div class="pain reveal"><span class="pain-num mono">01</span><h3>200 переглядів і тиша</h3><p>Витрачаєш пів дня на зйомку, а алгоритм показує відео двадцятьом людям — і серед них твоя мама.</p></div>
+      <div class="pain reveal"><span class="pain-num mono">02</span><h3>Немає ідей</h3><p>Сідаєш писати сценарій — і дивишся в порожній екран. Повторюєш чужі тренди, які «в тебе чомусь не заходять».</p></div>
+      <div class="pain reveal"><span class="pain-num mono">03</span><h3>Перегляди є — грошей нема</h3><p>Один рілс залетів на 50К, підписники прийшли… і нічого не купили. Бо контент не веде до продажу.</p></div>
+      <div class="pain reveal"><span class="pain-num mono">04</span><h3>Зйомка з'їдає день</h3><p>Дублі, світло, монтаж до ночі. Без системи один рілс коштує тобі 4 години життя.</p></div>
+    </div>
+    <p class="pains-bridge reveal">Проблема не в тобі і не в алгоритмах. Проблема в тому, що рілс знімаються <b>без системи</b>. Саме систему ти й отримаєш.</p>
+  </div>
+</section>
+
+<!-- ================= 3. ДЛЯ КОГО ================= -->
+<section class="sec sec-dark">
+  <div class="wrap">
+    <p class="kicker">Для кого це навчання</p>
+    <h2>Три типи людей,<br>яким це <em>потрібно</em></h2>
+    <div class="who">
+      <div class="who-card reveal">
+        <div class="who-tag mono">A</div>
+        <h3>Експертам і фрілансерам</h3>
+        <p>Психологи, б'юті, коучі, юристи, нутриціологи. Продаєш послуги — а клієнти приходять «по сарафану». Рілс стануть твоїм стабільним джерелом заявок.</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-tag mono">B</div>
+        <h3>Малому бізнесу</h3>
+        <p>Кафе, салони, магазини, локальні бренди. Замість «постимо, бо треба» — контент, який приводить людей у дірект і в точку.</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-tag mono">C</div>
+        <h3>Майбутнім рілс-мейкерам</h3>
+        <p>Хочеш знімати рілс для клієнтів і заробляти на цьому. Отримаєш ремесло + розумітимеш, як продавати цю послугу.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. РЕЗУЛЬТАТ ================= -->
+<section class="sec">
+  <div class="wrap">
+    <p class="kicker">Що буде через 4 тижні</p>
+    <h2>Ти виходиш<br>з <em>готовою системою</em></h2>
+    <ul class="results">
+      <li class="reveal"><b>Контент-стратегія</b> під твою нішу: позиціонування, рубрики, 30 ідей рілс наперед — більше ніякого «що знімати?»</li>
+      <li class="reveal"><b>Зняті й опубліковані рілс</b> — мінімум 8 за курс, з фідбеком на кожен (на тарифах з перевіркою)</li>
+      <li class="reveal"><b>Швидка зйомка на телефон</b>: світло, кадр, дублі — один рілс за 40 хвилин замість пів дня</li>
+      <li class="reveal"><b>Воронка в дірект</b>: рілс → коментар/дірект → заявка. Контент, що продає, а не просто збирає лайки</li>
+    </ul>
   </div>
 </section>
 <!-- SECTIONS -->
