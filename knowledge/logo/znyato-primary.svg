@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="240" viewBox="0 0 640 240">
+  <rect width="640" height="240" fill="#FFFFFF"/>
+  <!-- wordmark -->
+  <text x="60" y="132" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="84" letter-spacing="4" fill="#111111">ЗНЯТ</text>
+  <!-- О as record button -->
+  <circle cx="378" cy="103" r="34" fill="none" stroke="#111111" stroke-width="11"/>
+  <circle cx="378" cy="103" r="13" fill="#FF3B30"/>
+  <!-- clap line -->
+  <rect x="60" y="158" width="352" height="6" fill="#111111"/>
+  <rect x="60" y="158" width="118" height="6" fill="#FF3B30"/>
+  <!-- tagline -->
+  <text x="60" y="196" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="21" letter-spacing="6" fill="#555555">РІЛС-ПРОДАКШН ПІД КЛЮЧ</text>
+</svg>
