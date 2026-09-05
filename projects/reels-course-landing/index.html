@@ -13,7 +13,9 @@
   4. Фото авторки (блок «Хто веде»)
   5. Кейси з цифрами (3 картки)
   6. Скріни відгуків (4 картки)
-  7. Посилання оплати на кнопках тарифів (зараз #)
+  7. Конфіг заявки і онлайн-запису — внизу файлу в <script>:
+     FORM_ENDPOINT (Formspree), TELEGRAM_USERNAME, INSTAGRAM_USERNAME,
+     CALENDLY_URL (онлайн-запис на розбір)
 ============================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,6 +35,7 @@
   --mono:'JetBrains Mono', monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{
   font-family:var(--body);
@@ -244,6 +247,30 @@ h1 em{
 .plan-btn{justify-content:center;text-align:center}
 .plans-note{margin-top:36px;font-size:12px;opacity:.6;text-align:center}
 @media(max-width:880px){.plans{grid-template-columns:1fr}.plan--hot{transform:none}}
+
+/* ---------- заявка + запис ---------- */
+.apply-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+.apply-form{border:2px solid var(--ink);background:#fff;padding:34px 30px;box-shadow:8px 8px 0 var(--rec);display:grid;gap:18px}
+.apply-form label{display:grid;gap:8px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.apply-form input,.apply-form select,.apply-form textarea{
+  font-family:var(--body);font-size:16px;padding:13px 14px;
+  border:2px solid var(--ink);background:var(--paper);color:var(--ink);width:100%;
+}
+.apply-form input:focus,.apply-form select:focus,.apply-form textarea:focus{outline:3px solid var(--lime)}
+.apply-form input.err{border-color:var(--rec);outline:3px solid rgba(255,59,48,.25)}
+.apply-btn{justify-content:center;width:100%}
+.form-note{font-size:11px;opacity:.6}
+.form-fallback{border-top:2px dashed var(--line);padding-top:16px;font-size:14px}
+.fallback-btns{display:flex;gap:12px;margin-top:14px}
+.fallback-btns .btn{padding:12px 20px;font-size:13px}
+.booking{border:2px solid var(--ink);background:var(--ink);color:var(--paper);padding:34px 30px}
+.booking-head h3{font-family:var(--display);font-size:20px;font-weight:600;margin-bottom:12px}
+.booking-head p{font-size:15px;opacity:.85;margin-bottom:24px}
+.booking-line{font-size:12px;color:var(--lime);margin-bottom:18px;letter-spacing:.06em}
+.booking-btn{border-color:var(--lime);box-shadow:6px 6px 0 var(--lime);justify-content:center;width:100%}
+#calendly-slot{min-height:0}
+#calendly-slot iframe{border:0;width:100%}
+@media(max-width:880px){.apply-grid{grid-template-columns:1fr}}
 
 /* ---------- відгуки ---------- */
 .reviews{display:grid;grid-template-columns:1fr 1fr;gap:24px}
@@ -502,7 +529,7 @@ h1 em{
           <li class="no">Розбори твоїх рілс</li>
           <li class="no">Особиста робота з Оксаною</li>
         </ul>
-        <a class="btn btn--ghost plan-btn" href="#">Йду сам(а)</a>
+        <a class="btn btn--ghost plan-btn" href="#apply" data-tariff="Самостійний ($149)">Йду сам(а)</a>
       </div>
       <div class="plan plan--hot reveal">
         <div class="plan-badge mono">хіт • 20 місць</div>
@@ -517,7 +544,7 @@ h1 em{
           <li class="yes">Доступ 12 місяців</li>
           <li class="no">Особиста робота з Оксаною</li>
         </ul>
-        <a class="btn plan-btn" href="#">Хочу з фідбеком</a>
+        <a class="btn plan-btn" href="#apply" data-tariff="З фідбеком ($299)">Хочу з фідбеком</a>
       </div>
       <div class="plan reveal">
         <div class="plan-name mono">VIP • ОСОБИСТО</div>
@@ -531,10 +558,60 @@ h1 em{
           <li class="yes">Доступ назавжди</li>
           <li class="yes">Лише 5 місць</li>
         </ul>
-        <a class="btn btn--ghost plan-btn" href="#">Хочу VIP</a>
+        <a class="btn btn--ghost plan-btn" href="#apply" data-tariff="VIP ($599)">Хочу VIP</a>
       </div>
     </div>
-    <p class="plans-note mono">[ ЗАМІНИ: ціни — чернетка; постав реальні + посилання оплати на кнопки ] • Можлива оплата двома частинами</p>
+    <p class="plans-note mono">[ ЗАМІНИ: ціни — чернетка ] • Можлива оплата двома частинами</p>
+  </div>
+</section>
+
+<!-- ================= 8b. ЗАЯВКА + ОНЛАЙН-ЗАПИС ================= -->
+<section class="sec" id="apply">
+  <div class="wrap">
+    <p class="kicker">Заявка</p>
+    <h2>Залиш заявку —<br>відповім <em>особисто</em></h2>
+    <div class="apply-grid">
+      <form class="apply-form reveal" id="apply-form" novalidate>
+        <label>Як тебе звати *
+          <input type="text" name="name" required placeholder="Ім'я">
+        </label>
+        <label>Telegram або Instagram *
+          <input type="text" name="contact" required placeholder="@нікнейм">
+        </label>
+        <label>Тариф
+          <select name="tariff" id="tariff-select">
+            <option value="Ще думаю">Ще думаю — потрібна консультація</option>
+            <option value="Самостійний ($149)">Самостійний — $149</option>
+            <option value="З фідбеком ($299)" selected>З фідбеком — $299</option>
+            <option value="VIP ($599)">VIP • Особисто — $599</option>
+          </select>
+        </label>
+        <label>Питання чи коментар
+          <textarea name="comment" rows="3" placeholder="Наприклад: чи можна оплату частинами?"></textarea>
+        </label>
+        <button type="submit" class="btn apply-btn">Надіслати заявку</button>
+        <p class="form-note mono" id="form-status">Відповідаю протягом дня. Заявка ні до чого не зобов'язує.</p>
+        <div class="form-fallback" id="form-fallback" hidden>
+          <p>Текст заявки скопійовано 📋 — надішли його мені в дірект:</p>
+          <div class="fallback-btns">
+            <a class="btn btn--ghost" id="fb-tg" href="#" target="_blank" rel="noopener">Telegram</a>
+            <a class="btn btn--ghost" id="fb-ig" href="#" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+      </form>
+      <div class="booking reveal">
+        <div class="booking-head">
+          <h3>Онлайн-запис на безкоштовний розбір</h3>
+          <p>15 хвилин у Zoom: подивлюсь твій акаунт, скажу чесно, що не працює і чи допоможе тобі курс.</p>
+        </div>
+        <div id="calendly-slot"></div>
+        <div id="booking-fallback">
+          <div class="booking-line mono">◦ обери зручний час — календар підтягнеться сюди</div>
+          <a class="btn booking-btn" id="booking-dm" href="#apply">Записатись через заявку ↑</a>
+          <p class="form-note mono">[ ЗАМІНИ: встав посилання Calendly у CALENDLY_URL внизу файлу — і тут з'явиться живий календар ]</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 <!-- ================= 9. ВІДГУКИ ================= -->
@@ -637,6 +714,76 @@ const cio = new IntersectionObserver(entries => {
   });
 }, { threshold: .5 });
 document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+// ===== ЗАЯВКА + ОНЛАЙН-ЗАПИС — конфіг (ЗАМІНИ значення) =====
+const FORM_ENDPOINT = '';        // ЗАМІНИ: ендпоінт Formspree, напр. 'https://formspree.io/f/xxxxxxx'
+const TELEGRAM_USERNAME = '';    // ЗАМІНИ: нік у Telegram без @, напр. 'oksana_reels'
+const INSTAGRAM_USERNAME = '';   // ЗАМІНИ: нік в Instagram без @
+const CALENDLY_URL = '';         // ЗАМІНИ: посилання Calendly, напр. 'https://calendly.com/oksana/rozbir'
+
+// Клік по тарифу → підставити тариф у форму
+document.querySelectorAll('[data-tariff]').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('tariff-select').value = a.dataset.tariff;
+}));
+
+// Онлайн-запис: якщо є Calendly — вбудувати календар
+if (CALENDLY_URL) {
+  document.getElementById('booking-fallback').hidden = true;
+  const wrap = document.getElementById('calendly-slot');
+  const div = document.createElement('div');
+  div.className = 'calendly-inline-widget';
+  div.dataset.url = CALENDLY_URL + '?hide_gdpr_banner=1';
+  div.style.minWidth = '280px';
+  div.style.height = '620px';
+  wrap.appendChild(div);
+  const s = document.createElement('script');
+  s.src = 'https://assets.calendly.com/assets/external/widget.js';
+  s.async = true;
+  document.body.appendChild(s);
+}
+
+// Форма заявки
+document.getElementById('apply-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const form = e.target;
+  const status = document.getElementById('form-status');
+  let valid = true;
+  form.querySelectorAll('input[required]').forEach(i => {
+    i.classList.toggle('err', !i.value.trim());
+    if (!i.value.trim()) valid = false;
+  });
+  if (!valid) { status.textContent = 'Заповни ім\'я і контакт — інакше я не зможу відповісти.'; return; }
+
+  const data = Object.fromEntries(new FormData(form).entries());
+  const text = `Заявка на курс «Рілс, що продають»\nІм'я: ${data.name}\nКонтакт: ${data.contact}\nТариф: ${data.tariff}\nКоментар: ${data.comment || '—'}`;
+
+  if (FORM_ENDPOINT) {
+    status.textContent = 'Надсилаю…';
+    try {
+      const r = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (!r.ok) throw new Error(r.status);
+      form.querySelectorAll('label, .apply-btn').forEach(el => el.hidden = true);
+      status.textContent = '✓ Заявку отримано! Відповім тобі протягом дня — перевіряй дірект.';
+      return;
+    } catch (err) {
+      status.textContent = 'Не вдалось надіслати автоматично — напиши мені в дірект 👇';
+    }
+  }
+  // Без ендпоінта: копіюємо текст і ведемо в дірект
+  try { await navigator.clipboard.writeText(text); } catch (err) {}
+  status.textContent = 'Майже готово — один клік 👇';
+  const fb = document.getElementById('form-fallback');
+  fb.hidden = false;
+  const tg = document.getElementById('fb-tg'), ig = document.getElementById('fb-ig');
+  if (TELEGRAM_USERNAME) tg.href = 'https://t.me/' + TELEGRAM_USERNAME; else tg.hidden = true;
+  if (INSTAGRAM_USERNAME) ig.href = 'https://ig.me/m/' + INSTAGRAM_USERNAME; else ig.hidden = true;
+  if (!TELEGRAM_USERNAME && !INSTAGRAM_USERNAME)
+    fb.querySelector('p').textContent = 'Текст заявки скопійовано 📋 — надішли його в дірект. [ ЗАМІНИ: додай ніки TG/IG у конфіг — і тут з\'являться кнопки ]';
+});
 </script>
 </body>
 </html>
