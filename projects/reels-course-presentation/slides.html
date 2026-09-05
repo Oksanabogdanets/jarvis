@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <title>РІЛС, ЩО ПРОДАЮТЬ — презентація курсу</title>
 <!-- Презентація 16:9 (1280×720). Заглушки позначено «ЗАМІНИ». PDF генерується скриптом export-pdf. -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Golos+Text:wght@400;500;600;800&family=JetBrains+Mono:wght@400;700&display=swap&subset=cyrillic" rel="stylesheet">
+<link href="fonts/fonts.css" rel="stylesheet">
 <style>
 :root{
   --ink:#0d0b09; --paper:#f4efe6; --paper-dim:#e9e1d2;
@@ -37,6 +35,7 @@ h2 em,h1 em{font-style:normal;color:var(--rec)}
 .mono{font-family:var(--mono)}
 .mark{background:var(--lime);padding:1px 8px}
 .slide--dark .mark{color:var(--ink)}
+@media print{.grain::before{display:none}}
 </style>
 </head>
 <body>
