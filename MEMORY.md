@@ -14,7 +14,8 @@
 
 > Дописывайте по мере появления. Telegram, GitHub, email, ключевые аккаунты сервисов.
 
-*Пока пусто.*
+- **Instagram:** @oksana.bogdanets
+- **GitHub:** Oksanabogdanets (репо jarvis — приватне)
 
 ---
 
