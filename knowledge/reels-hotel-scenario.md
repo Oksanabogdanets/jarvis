@@ -101,3 +101,4 @@
 ## Готові сценарії
 
 - **Grand Park Hotel Rovinj** (Хорватія, Ровінь) — референс, текст вище по блоках
+- **Maslina Resort** (Хорватія, Хвар, Старий Град) — `knowledge/reels-scenarios/maslina-resort-hvar.md`
