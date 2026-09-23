@@ -102,16 +102,111 @@
 
 ## 5. Чотири групи людей: пішли / стабільні / сумніваються / померли
 
-*(заповнюється)*
+### 5.1 Ті, хто пішов (або повернувся до м'яса) через показники
+
+Задокументовані публічні історії (імена в оригінальних статтях, частина — під псевдонімами):
+- **The Village, «Я думала, что лучше других» (2021)** — серія інтерв'ю з вегетаріанцями зі стажем, які повернулись до м'яса. Один із героїв став вегетаріанцем у 16 через вайшнавізм; інша героїня: анемія, зникли місячні, +10 кг, проблеми зі шкірою. Спільний мотив — не «релігія погана», а «організм не витягнув».
+- **TUT.BY, «Йог десять лет не ел мяса, а теперь предостерегает других»** — 10 років без м'яса, різноманітний раціон з бобовими й рослинним протеїном, але низький гемоглобін, слабкість, «розфокус». Повернув м'ясо, застерігає інших.
+- **CityDog (Мінськ), Metro, Life.ru (10 історій), 7Дней (зірки)** — однотипні кейси: 3–16 років без м'яса, низький гемоглобін/білок, лікар радить тваринний білок, повернення до м'яса, «світ не перевернувся».
+- **ISKCON Desire Tree** — відданий, якому лікар прописав м'ясо через дефіцит (див. розділ 4).
+
+Важливо: **жоден із публічних кейсів не звучить як «вийшов з ISKCON, бо впали аналізи»**. Порядок зазвичай зворотний: людина розчаровується в організації (історія Лізи на listentosoul.ru — «величезна система брехні», без згадки про здоров'я; форум orthodoxy.cafe «Бывшие кришнаиты» — ідеологічні причини), і вже після виходу перестає бути вегетаріанцем. Ті, хто лишається у вірі, але їсть м'ясо «за станом здоров'я», в спільноті існують, але публічно про це не пишуть — це порушення принципу.
+
+### 5.2 Ті, у кого багато років усе добре
+
+- Це більшість. Когортні дані (розділ 3.3) саме про них: десятки тисяч лакто-вегетаріанців із 18-річним спостереженням живуть не менше, а трохи довше за м'ясоїдів.
+- **Ананта Шанті дас (Анатолій Пиняєв)** — перший радянський кришнаїт, вегетаріанець з 1971 року, 42 роки без м'яса, пройшов психлікарні. Помер у 2013 у 65 років від інсульту. Інсульт — провідна причина смерті чоловіків у РФ, але й той ризик, що вищий у вегетаріанців за EPIC-Oxford; причинно-наслідковий зв'язок з дієтою не встановлений.
+- Регіональні репортажі 2025 року (НГС Омськ, 72.ру Тюмень), казахстанський репортаж до 50-річчя руху, вінницький фоторепортаж «Вежі» — віддані зі стажем 15–30 років розповідають про нормальне самопочуття; лабораторних даних у репортажах немає.
+- Розділ «стареющие телом преданные» на krishna.ru: спільнота визнає, що покоління 1990-х старіє і потребує медичного догляду — але це старіння як таке, не наслідок дієти.
+
+### 5.3 Ті, хто сумнівається
+
+- Теми про B12 на krishna.ru — саме це: люди з аналізами нижче норми, які шукають спосіб лишитись вегетаріанцями (добавки, більше молока, аюрведа). Це найчисленніша «сіра зона».
+- Форумна тема «Как доказать доктору, что вегетарианство полезнее» — сумнів, вивернутий навиворіт: лікар каже одне, віра інше.
+- Дискусія «Веганы» на тому ж форумі: частина відданих йде далі у веганство (без молока) — і саме ця підгрупа за всіма даними в найгіршій позиції по B12, кальцію й переломах.
+
+### 5.4 Ті, хто помер
+
+- **Від вегетаріанської дієти в мирних умовах — задокументованих випадків серед відданих ISKCON в Україні чи РФ немає.** Ні в ЗМІ, ні в судових справах, ні в наукових публікаціях.
+- **Радянські табори, 1980-ті:** близько 60 кришнаїтів були ув'язнені; їм давали лише м'ясну їжу, вони відмовлялись, посилки з продуктами не передавали. **Саркіс Оганджанян** помер 26.12.1987 у 23 роки від туберкульозу на тлі виснаження, за кілька тижнів до кінця строку. За Вікіпедією, «кілька кришнаїтів загинули у в'язницях, таборах і психлікарнях». Це смерті від переслідувань, а не від дієти.
+- **Дитячі смерті у веганських сім'ях РФ** (Красноярськ, 2-річна дівчинка, анемія і хронічне розладнання харчування; Сочі, справа блогера-сироїда Максима Лютого; Митищі) — родини не кришнаїтські, дієти веганські/сироїдні, а не лакто-вегетаріанські.
+- Зі значущих ризиків для дорослих лишається інсульт (+20 % за EPIC-Oxford) — це статистичний надлишок, а не задокументовані «смерті від кришнаїзму».
 
 ## 6. Чого НЕ існує (прогалини в даних)
 
-*(заповнюється)*
+- Немає жодного медичного обстеження когорти відданих ISKCON — ні в Україні, ні в РФ, ні у світі. Усі цифри — екстраполяція з інших лакто-вегетаріанців.
+- Немає статистики виходу з руху за причинами. ISKCON її не публікує; дослідники релігії рахують громади, не відтік.
+- Немає української клінічної роботи по вегетаріанцях з відсотками дефіцитів (є тільки рекомендації лабораторій). Російська — одна, і тільки по дітях.
+- Історії «пішов через аналізи» існують у ЗМІ як історії вегетаріанців, а не кришнаїтів; релігійна мотивація згадується побіжно.
+- Частина джерел (форум krishna.ru, ISKCON Desire Tree, The Village, TUT.BY, informburo.kz) під час цього дослідження була недоступна через мережеву блокаду — використані пошукові витяги, без повного тексту. Цитати варто перевірити перед публічним використанням.
 
 ## 7. Практичний висновок: які аналізи і як часто
 
-*(заповнюється)*
+Якщо мета — сюжет/контент або розмова з кимось із руху, ключова теза така: **вегетаріанство кришнаїтів саме по собі не небезпечне, небезпечне вегетаріанство без аналізів і з аюрведою замість B12.**
+
+Мінімальний чек-ап лакто-вегетаріанця (консенсус українських лабораторій + ESPEN/Академії дієтології США):
+- B12 (краще активний B12 / holo-TC) + гомоцистеїн — раз на рік;
+- феритин + загальний аналіз крові — раз на рік;
+- вітамін D — раз на рік;
+- ТТГ + йод у сечі — при відмові від риби;
+- при скаргах (оніміння, «мурашки», втома, депресія) — позачергово, бо неврологічні симптоми дефіциту B12 частково незворотні.
+
+Профілактична доза B12 для вегетаріанця — 25–100 мкг/день або 1000 мкг 2 рази на тиждень (ціанокобаламін), це копійчано і не суперечить принципам ISKCON: добавка не тваринного походження.
 
 ## 8. Джерела
 
-*(заповнюється)*
+**Наука — B12, залізо, діти**
+- Pawlak R. et al. How prevalent is vitamin B12 deficiency among vegetarians? Nutrition Reviews 2013 — https://academic.oup.com/nutritionreviews/article/71/2/110/1940320
+- Pawlak R. et al. The prevalence of cobalamin deficiency among vegetarians assessed by serum vitamin B12. EJCN 2014 — https://pubmed.ncbi.nlm.nih.gov/24667752/
+- Identification of vitamin B12 deficiency in vegetarian Indians. Br J Nutr 2018 — https://pubmed.ncbi.nlm.nih.gov/29446340/
+- Vitamin B-12 and homocysteine status among vegetarians: a global perspective. AJCN 2009 — https://pubmed.ncbi.nlm.nih.gov/19357223/
+- Neuropsychiatric and neurological problems among B12-deficient young vegetarians — https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5946370/
+- Krajčovičová-Kudláčková M. et al. Selected vitamins and trace elements in blood of vegetarians. Ann Nutr Metab — https://karger.com/anm/article-abstract/39/6/334/33480
+- Ясаков Д. и др. Обеспеченность детей-вегетарианцев железом и витамином B12: одномоментное контролируемое исследование — https://cyberleninka.ru/article/n/obespechennost-detey-vegetariantsev-zhelezom-i-vitaminom-b12-odnomomentnoe-kontroliruemoe-issledovanie
+- Минздрав РФ, 01.11.2022: 95 % детей-вегетарианцев испытывают дефицит — https://minzdrav.gov.ru/news/2022/11/01/19482-
+- Медвестник: отклонения в физическом развитии у четверти детей-вегетарианцев — https://medvestnik.ru/content/news/V-Centre-Minzdrava-zayavili-ob-otkloneniyah-v-fizicheskom-razvitii-u-chetverti-detei-vegetariancev.html
+- Vegan Health (укр.): рівень B12 у лактоововегетаріанців — https://www.veganhealth.in.ua/2023/12/b12-status-of-lacto-ovo-vegetarians.html
+
+**Наука — смертність, серце, кістки**
+- Orlich M. et al. Vegetarian dietary patterns and mortality in AHS-2. JAMA Intern Med 2013 — https://pubmed.ncbi.nlm.nih.gov/23836264/
+- Cause-specific and all-cause mortalities in vegetarian vs nonvegetarian participants, AHS-2. AJCN 2024 — https://pubmed.ncbi.nlm.nih.gov/39098708/
+- Tong T. et al. Risks of ischaemic heart disease and stroke in meat eaters, fish eaters, and vegetarians, EPIC-Oxford. BMJ 2019 — https://pubmed.ncbi.nlm.nih.gov/31484644/
+- Tong T. et al. Vegetarian and vegan diets and risks of fractures, EPIC-Oxford. BMC Medicine 2020 — https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7682057/
+- Vegetarian diets and all-cause mortality, PLCO cohort — https://lpi.oregonstate.edu/publications/vegetarian-diets-and-risk-all-cause-mortality-population-based-prospective-study
+- Vegetarian dietary patterns and CVD: umbrella review 2024 — https://www.sciencedirect.com/science/article/pii/S2666667724002368
+
+**ISKCON — офіційне, форуми, соціологія**
+- ISKCON Health Ministry profile (GBC) — https://gbc.iskcon.org/ministry-profile-iskcon-health-ministry/
+- Форум krishna.ru: «Витамин B12» — http://www.forum.krishna.ru/showthread.php?t=10687 ; «Про витамин В12. Кто глубоко изучал данную тему?» — http://www.forum.krishna.ru/showthread.php?t=15026 ; «Как доказать доктору…» — http://www.forum.krishna.ru/showthread.php?t=19378 ; «Веганы» — http://www.forum.krishna.ru/archive/index.php/t-4028.html ; «стареющие телом преданные» — http://www.forum.krishna.ru/showthread.php?t=13043
+- ISKCON Desire Tree: Need to eat non veg because of nutrient deficiency — https://iskcondesiretree.com/forum/topics/need-to-eat-non-veg-because-of-nutrient-deficiency-what-should-i- ; Vitamin B12 — https://iskcondesiretree.com/forum/topics/vitamin-b12
+- 'God is a vegetarian': Hare Krishna, Buddhist and SDA devotees. Health Sociology Review 2010 — https://www.tandfonline.com/doi/abs/10.5172/hesr.2010.19.3.356
+- krishna.ru, енциклопедія: Вегетарианство — https://www.krishna.ru/encyclopedia/culture/health/vegetarianism/
+
+**Чисельність і контекст**
+- Міжнародне Товариство Свідомості Крішни (укр. Вікіпедія, дані Держдепартаменту 2019) — https://uk.wikipedia.org/wiki/Міжнародне_Товариство_Свідомості_Крішни
+- ISKCON News: Religious News Service highlights ISKCON devotees in Ukraine (2024) — https://iskconnews.org/religious-news-service-highlights-iskcon-devotees-in-ukraine/
+- Hinduism in Russia (оцінки 15 000–250 000) — https://en.wikipedia.org/wiki/Hinduism_in_Russia
+- Mind.ua: скільки в Україні вегетаріанців та веганів (КМІС) — https://mind.ua/news/20222628-skilki-v-ukrayini-vegetarianciv-ta-veganiv-doslidzhennya
+- ВЦИОМ: Вегетарианство и веганство: за и против (2023) — https://wciom.ru/analytical-reviews/analiticheskii-obzor/vegetarianstvo-i-veganstvo-za-i-protiv
+
+**Історії людей**
+- The Village: «Я думала, что лучше других»: бывшие вегетарианцы о возвращении к мясу (2021) — https://www.the-village.ru/food/experience-food/287528-myaso-ili-net
+- TUT.BY: Йог десять лет не ел мяса, а теперь предостерегает других — https://news.tut.by/go/566924.html
+- CityDog: Минчане о том, что заставило их отказаться от вегетарианства — https://citydog.io/post/zhizn-osobo-ne-izmenilas/
+- Life.ru: 10 историй от бывших веганов — https://life.ru/p/1561398
+- Metro: «Я съела стейк, и мир не перевернулся!» — https://www.metronews.ru/novosti/russia/reviews/ya-sela-steyk-i-mir-ne-perevernulsya-pochemu-byvshie-vegetariancy-snova-nachinayut-est-myaso-1769648/
+- История Лизы: как я пришла в сознание Кришны (вихід з ISKCON) — https://listentosoul.ru/istoriya-lizy-moj-opyt-samorazrusheniya-ili-kak-ya-prishla-v-soznanie-krishny/
+- informburo.kz: Как казахи и без мяса? 50 лет движения Харе Кришна — https://informburo.kz/stati/kak-kazahi-i-bez-myasa-poluvekovoy-yubiley-dvizheniya-hare-krishna-spravili-po-vegetarianski.html
+- НГС Омск (12.02.2025): Как живут кришнаиты в Омске — https://ngs55.ru/text/religion/2025/02/12/75038057/
+- 72.ру Тюмень (31.08.2025): Кто такие кришнаиты — https://72.ru/text/religion/2025/08/31/74835689/
+- Вежа (Вінниця): Часточка Індії у Вінниці — https://vezha.ua/chastochka-indiyi-u-vinnytsi-yak-zhyvut-vinnytski-krishnayity-ta-chomu-vid-nyh-skladno-pity-golodnym-fotoreportazh/
+
+**Смерті**
+- Преследования кришнаитов в СССР (Оганджанян, 1987) — https://ru.wikipedia.org/wiki/Преследования_кришнаитов_в_СССР
+- NEWSru: В Москве скончался первый советский кришнаит (2013) — https://www.newsru.com/religy/04jun2013/anantashanti.html
+- RT: семья веганов из Красноярска, смерть двухлетней девочки — https://russian.rt.com/russia/article/1216330-krasnoyarsk-semya-devochka-smert-delo
+- 53news: В Сочи суд арестовал сыроеда-вегетарианца, у которого умер ребёнок — https://53news.ru/novosti/v-sochi-sud-arestoval-syroeda-vegetariancza-u-kotorogo-umer-rebyonok-vspomnim-i-novgorodskij-sluchaj.html
+
+**Аюрведа / Торсунов (контекст ризику)**
+- Олег Торсунов — Компромат вики — https://kompromatwiki.org/wiki/Олег_Геннадьевич_Торсунов
+- Отзыв: Лекции Торсунова — https://irecommend.ru/content/lektsii-torsunova-ocherednoi-opium-dlya-naroda
